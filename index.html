@@ -153,7 +153,7 @@ layout: default
 <!-- ===================== SELECTED WORK ===================== -->
 <section id="work" class="section">
   <div class="wrap">
-    <h2>Selected Engineering Work</h2>
+    <h2>Professional Work — NewMind AI</h2>
     <div class="work-grid">
       <article>
         <h3>Turkish Diffusion Language Models</h3>
@@ -180,6 +180,90 @@ layout: default
         <p class="tags">Benchmarking · Calibration · LLM-as-judge</p>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- ===================== OPEN-SOURCE PROJECTS ===================== -->
+<section id="projects" class="section">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <p class="section-note">A selection of open-source projects on
+      <a href="https://github.com/byrayhana">GitHub</a> — computer vision, Turkish NLP, and ML/data science.
+      Keywords <span class="kw" style="margin:0">highlighted</span>.</p>
+
+    <div class="proj-cat">Computer Vision &amp; Image Processing</div>
+    <div class="proj-grid">
+      <article class="proj">
+        <div class="proj-h"><h3><a href="https://github.com/byrayhana/Brain-Tumor-Detection">Brain Tumor Detection</a></h3><span class="lang">Jupyter</span></div>
+        <p>Classifies MRI brain scans as tumor / no-tumor with a convolutional neural network — an end-to-end medical-imaging pipeline from preprocessing to evaluation.</p>
+        <div><span class="kw">CNN</span><span class="kw">Medical Imaging</span><span class="kw">TensorFlow / Keras</span><span class="kw">Image Classification</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3><a href="https://github.com/byrayhana/Object-detection-with-pretrained-YOLOv3-416">YOLOv3 Object-Detection Suite</a></h3><span class="lang">Python</span></div>
+        <p>Object detection with a pretrained <b>YOLOv3-416</b> model — extended with a <a href="https://github.com/byrayhana/object-detection-with-Non-Maximum-Supresssion-method">Non-Maximum-Suppression</a> implementation and a <a href="https://github.com/byrayhana/Real-time-object-detection-with-web-cam">real-time webcam</a> inference loop.</p>
+        <div><span class="kw">YOLOv3</span><span class="kw">OpenCV</span><span class="kw">Non-Max Suppression</span><span class="kw">Real-time</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3><a href="https://github.com/byrayhana/realtime-shape-detection-">Real-time Shape &amp; Color Detection</a></h3><span class="lang">Python</span></div>
+        <p>Classic OpenCV pipelines running on a live camera feed: <a href="https://github.com/byrayhana/OpenCV-color-detection">HSV color thresholding</a> and contour-based shape recognition.</p>
+        <div><span class="kw">OpenCV</span><span class="kw">Contours</span><span class="kw">HSV Thresholding</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3><a href="https://github.com/byrayhana/underwater-color-correction">Underwater Color Correction</a></h3><span class="lang">Python</span></div>
+        <p>Image-restoration for underwater imagery — correcting color cast and attenuation to recover natural tones (basis for the ICCIDA 2024 naval-mine detection work).</p>
+        <div><span class="kw">Image Restoration</span><span class="kw">OpenCV</span><span class="kw">Underwater Imaging</span></div>
+      </article>
+    </div>
+
+    <div class="proj-cat">Natural Language Processing (Turkish)</div>
+    <div class="proj-grid">
+      <article class="proj">
+        <div class="proj-h"><h3><a href="https://github.com/byrayhana/TurkceHaberSiniflandirma">Turkish News Classification</a></h3><span class="lang">Jupyter</span></div>
+        <p>Multi-class text classification of Turkish news articles — text preprocessing, vectorization, and supervised modeling for a morphologically rich language.</p>
+        <div><span class="kw">Turkish NLP</span><span class="kw">Text Classification</span><span class="kw">TF-IDF</span><span class="kw">scikit-learn</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3><a href="https://github.com/byrayhana/Turkish-tweets-sentiment-analysis">Turkish Tweets Sentiment Analysis</a> ★</h3><span class="lang">Jupyter</span></div>
+        <p>Sentiment classification of Turkish tweets — a full NLP pipeline (cleaning, tokenization, feature extraction, classification) tuned for informal, noisy social text.</p>
+        <div><span class="kw">Sentiment Analysis</span><span class="kw">Turkish NLP</span><span class="kw">NLTK</span><span class="kw">Feature Engineering</span></div>
+      </article>
+    </div>
+
+    <div class="proj-cat">Machine Learning &amp; Data Science</div>
+    <div class="proj-grid">
+      <article class="proj">
+        <div class="proj-h"><h3><a href="https://github.com/byrayhana/dvc-cml-churn">Churn Prediction with MLOps</a></h3><span class="lang">Python</span></div>
+        <p>End-to-end customer-churn model wired into an <b>MLOps</b> workflow — data &amp; model versioning with <b>DVC</b> and automated metric reporting on every commit via <b>CML</b> / GitHub Actions.</p>
+        <div><span class="kw">MLOps</span><span class="kw">DVC</span><span class="kw">CML</span><span class="kw">CI/CD</span><span class="kw">GitHub Actions</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3><a href="https://github.com/byrayhana/CustomerLifeTimeValue">Customer Lifetime Value</a></h3><span class="lang">Python</span></div>
+        <p>Probabilistic CLV prediction using <b>BG/NBD</b> and <b>Gamma-Gamma</b> models to forecast expected transactions and revenue per customer.</p>
+        <div><span class="kw">CLV</span><span class="kw">BG-NBD</span><span class="kw">Probabilistic Modeling</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3><a href="https://github.com/byrayhana/RFMAnalytics">RFM Customer Segmentation</a></h3><span class="lang">Python</span></div>
+        <p>Segments customers by <b>Recency-Frequency-Monetary</b> scoring to define actionable marketing personas from raw transaction data.</p>
+        <div><span class="kw">RFM</span><span class="kw">Segmentation</span><span class="kw">pandas</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3><a href="https://github.com/byrayhana/Mesasurement-Problems">A/B Testing &amp; Measurement</a></h3><span class="lang">Python</span></div>
+        <p>Statistical hypothesis testing and <b>A/B test</b> design — confidence intervals, significance tests, and conversion-comparison methodology.</p>
+        <div><span class="kw">A/B Testing</span><span class="kw">Hypothesis Testing</span><span class="kw">Statistics</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3><a href="https://github.com/byrayhana/TurkishTVSeriesForecasting">Turkish TV-Series Forecasting</a></h3><span class="lang">Jupyter</span></div>
+        <p>Time-series forecasting of TV-series ratings/viewership — trend and seasonality modeling on real Turkish broadcast data.</p>
+        <div><span class="kw">Time Series</span><span class="kw">Forecasting</span><span class="kw">pandas</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3><a href="https://github.com/byrayhana/library-automation-system-GUI">Library Automation System</a> ★</h3><span class="lang">Java</span></div>
+        <p>Desktop library-management application with a full GUI and a persistent database backend — member, book, and lending CRUD workflows.</p>
+        <div><span class="kw">Java</span><span class="kw">Swing</span><span class="kw">SQLite</span><span class="kw">CRUD</span></div>
+      </article>
+    </div>
+
+    <p class="proj-more"><a href="https://github.com/byrayhana?tab=repositories">See all 30+ repositories on GitHub →</a></p>
   </div>
 </section>
 
