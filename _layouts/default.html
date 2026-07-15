@@ -3,46 +3,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title | default: site.title }} — {{ site.tagline }}</title>
+  <title>{{ site.title }} · {{ site.tagline }}</title>
   <meta name="description" content="{{ site.description }}">
   <meta name="author" content="{{ site.author }}">
-  <!-- Open Graph -->
-  <meta property="og:title" content="{{ site.title }} — {{ site.tagline }}">
+  <meta property="og:title" content="{{ site.title }} · {{ site.tagline }}">
   <meta property="og:description" content="{{ site.description }}">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="profile">
   <meta property="og:url" content="{{ site.url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231f4e79'/><text x='16' y='22' font-family='Georgia,serif' font-size='16' fill='white' text-anchor='middle'>R</text></svg>">
 </head>
 <body>
-  <header class="nav">
-    <div class="nav-inner">
-      <a href="#top" class="brand">RB</a>
-      <nav>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a href="#top" class="wordmark">Reyhan&nbsp;Bayraktar</a>
+      <nav class="topnav">
         <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#work">Work</a>
         <a href="#publications">Publications</a>
         <a href="#experience">Experience</a>
+        <a href="#expertise">Expertise</a>
       </nav>
     </div>
   </header>
 
-  <main id="top">
-    {{ content }}
-  </main>
+  <main id="top">{{ content }}</main>
 
-  <footer class="footer">
+  <footer class="site-footer">
     <div class="wrap">
-      <p>
-        <a href="https://github.com/{{ site.github_user }}">GitHub</a> ·
-        <a href="https://huggingface.co/{{ site.huggingface_user }}">Hugging&nbsp;Face</a> ·
-        <a href="mailto:{{ site.email }}">Email</a>
+      <p class="links">
+        <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+        <span>·</span><a href="https://github.com/{{ site.github_user }}">GitHub</a>
+        <span>·</span><a href="https://huggingface.co/{{ site.huggingface_user }}">Hugging&nbsp;Face</a>
+        <span>·</span><a href="{{ site.linkedin_url }}">LinkedIn</a>
       </p>
-      <p class="muted">© {{ 'now' | date: "%Y" }} {{ site.author }} · Built with Jekyll, hosted on GitHub Pages.</p>
+      <p class="fine">© {{ 'now' | date: "%Y" }} {{ site.author }}</p>
     </div>
   </footer>
 </body>

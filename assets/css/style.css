@@ -1,110 +1,107 @@
-/* ============ tokens ============ */
+/* ============================ tokens ============================ */
 :root{
-  --bg:#0b0f17; --bg2:#0f1521; --card:#131b2b; --card2:#161f30;
-  --line:#233049; --txt:#e7edf6; --muted:#93a0b5; --muted2:#6c7a92;
-  --accent:#38bdf8; --accent2:#818cf8; --accent3:#34d399;
-  --grad:linear-gradient(120deg,#38bdf8,#818cf8 55%,#34d399);
-  --maxw:1060px; --radius:16px;
+  --bg:#ffffff; --alt:#f6f7f9; --ink:#1a1e26; --body:#3d4551; --muted:#6b7280;
+  --line:#e6e8ec; --accent:#1f4e79; --accent-soft:#2b6cb0; --maxw:860px;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  margin:0; background:radial-gradient(1200px 600px at 80% -10%,#16233b 0,transparent 60%),
-    radial-gradient(900px 500px at -10% 10%,#101a2e 0,transparent 55%),var(--bg);
-  color:var(--txt); font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  line-height:1.65; -webkit-font-smoothing:antialiased;
-}
-a{color:var(--accent); text-decoration:none} a:hover{color:var(--accent2)}
-.wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px}
+body{margin:0; background:var(--bg); color:var(--body);
+  font-family:var(--sans); font-size:17px; line-height:1.7; -webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px}
+a{color:var(--accent); text-decoration:none}
+a:hover{color:var(--accent-soft); text-decoration:underline; text-underline-offset:3px}
+h1,h2,h3,h4{color:var(--ink); font-family:var(--serif); font-weight:600; letter-spacing:-.01em}
 
-/* ============ nav ============ */
-.nav{position:sticky; top:0; z-index:40; backdrop-filter:blur(10px);
-  background:rgba(11,15,23,.72); border-bottom:1px solid var(--line)}
-.nav-inner{max-width:var(--maxw); margin:0 auto; padding:12px 22px; display:flex;
-  align-items:center; justify-content:space-between}
-.brand{display:grid; place-items:center; width:38px; height:38px; border-radius:10px;
-  font-weight:800; color:#08111e; background:var(--grad)}
-.nav nav{display:flex; gap:22px; flex-wrap:wrap}
-.nav nav a{color:var(--muted); font-weight:500; font-size:.94rem}
-.nav nav a:hover{color:var(--txt)}
+/* ============================ top bar ============================ */
+.topbar{position:sticky; top:0; z-index:30; background:rgba(255,255,255,.86);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+.topbar-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 28px}
+.wordmark{font-family:var(--serif); font-size:1.05rem; font-weight:600; color:var(--ink)}
+.wordmark:hover{text-decoration:none; color:var(--accent)}
+.topnav{display:flex; gap:26px}
+.topnav a{color:var(--muted); font-size:.92rem; font-weight:500}
+.topnav a:hover{color:var(--accent); text-decoration:none}
 
-/* ============ hero ============ */
-.hero{padding:72px 22px 26px}
-.hero-grid{display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center}
-.eyebrow{margin:0 0 6px; color:var(--accent3); font-weight:600; letter-spacing:.02em;
-  text-transform:uppercase; font-size:.82rem}
-.hero h1{margin:0 0 14px; font-size:clamp(2.4rem,6vw,3.8rem); font-weight:800; letter-spacing:-.02em; line-height:1.05}
-.lede{margin:0 0 26px; font-size:1.16rem; color:var(--muted); max-width:38ch}
-.lede strong{color:var(--txt)}
-.cta{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px}
-.btn{display:inline-block; padding:11px 18px; border-radius:12px; font-weight:600; font-size:.95rem;
-  border:1px solid var(--line); color:var(--txt); background:var(--card); transition:.18s}
-.btn:hover{transform:translateY(-2px); border-color:var(--accent); color:var(--txt)}
-.btn.primary{background:var(--grad); color:#08111e; border:none}
-.btn.ghost{background:transparent}
-.loc{color:var(--muted2); font-size:.92rem; margin:6px 0 0}
-.hero-badge .monogram{width:150px; height:150px; border-radius:28px; display:grid; place-items:center;
-  font-size:3.4rem; font-weight:800; color:#08111e; background:var(--grad);
-  box-shadow:0 20px 60px -20px rgba(56,189,248,.5)}
+/* ============================ masthead ============================ */
+.masthead{padding:76px 0 40px; border-bottom:1px solid var(--line)}
+.kicker{margin:0 0 10px; color:var(--accent); font-weight:600; font-size:.9rem;
+  letter-spacing:.06em; text-transform:uppercase; font-family:var(--sans)}
+.masthead h1{margin:0 0 20px; font-size:clamp(2.6rem,6vw,3.6rem); line-height:1.04}
+.summary{max-width:62ch; font-size:1.16rem; color:var(--body); margin:0 0 22px}
+.summary strong{color:var(--ink); font-weight:600}
+.contact{font-size:.96rem; color:var(--muted); margin:0; line-height:2}
+.contact .sep{margin:0 10px; color:var(--line)}
+.contact .loc{color:var(--muted)}
 
-/* ============ metrics ============ */
-.metrics{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:44px}
-.metrics div{background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
-  padding:18px; text-align:center}
-.metrics .num{display:block; font-size:1.7rem; font-weight:800;
-  background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent}
-.metrics .lbl{display:block; color:var(--muted); font-size:.82rem; margin-top:4px}
+/* ============================ sections ============================ */
+.section{padding:56px 0}
+.section.alt{background:var(--alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.section h2{font-size:1.7rem; margin:0 0 24px; position:relative; padding-bottom:12px}
+.section h2::after{content:""; position:absolute; left:0; bottom:0; width:44px; height:3px;
+  background:var(--accent); border-radius:2px}
+.section-note{margin:-12px 0 22px; color:var(--muted); font-size:.9rem}
+.prose{max-width:66ch}
+.prose p{margin:0 0 16px}
+.prose strong{color:var(--ink); font-weight:600}
 
-/* ============ sections ============ */
-.section{padding:52px 22px}
-.section h2{font-size:1.7rem; font-weight:700; margin:0 0 26px; letter-spacing:-.01em}
-.hash{color:var(--accent2); font-family:"JetBrains Mono",monospace; margin-right:6px}
-.prose{max-width:72ch} .prose p{color:var(--muted); margin:0 0 16px}
-.prose strong{color:var(--txt)}
-.stack-line{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px}
-.stack-line span{font-family:"JetBrains Mono",monospace; font-size:.8rem; color:var(--accent);
-  border:1px solid var(--line); background:var(--bg2); padding:4px 10px; border-radius:999px}
+/* ============================ stat row ============================ */
+.stat-row{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:34px;
+  border-top:1px solid var(--line); padding-top:26px}
+.stat{display:flex; flex-direction:column}
+.stat .v{font-family:var(--serif); font-size:1.7rem; font-weight:600; color:var(--accent)}
+.stat .k{font-size:.82rem; color:var(--muted)}
 
-/* ============ cards ============ */
-.cards{display:grid; gap:16px}
-.skills{grid-template-columns:repeat(3,1fr)}
-.work{grid-template-columns:repeat(2,1fr)}
-.card{background:linear-gradient(180deg,var(--card),var(--card2)); border:1px solid var(--line);
-  border-radius:var(--radius); padding:22px; transition:.2s}
-.card:hover{transform:translateY(-3px); border-color:#2f4066; box-shadow:0 18px 40px -24px rgba(0,0,0,.8)}
-.card h3{margin:0 0 8px; font-size:1.06rem}
-.card p{margin:0; color:var(--muted); font-size:.95rem}
-.work-card .tags{display:flex; flex-wrap:wrap; gap:7px; margin-top:14px}
-.work-card .tags span{font-family:"JetBrains Mono",monospace; font-size:.72rem; color:var(--muted);
-  border:1px solid var(--line); padding:3px 9px; border-radius:999px; background:var(--bg2)}
+/* ============================ publications ============================ */
+.pub-list{list-style:none; margin:0; padding:0; counter-reset:pub}
+.pub{display:grid; grid-template-columns:64px 1fr; gap:12px; padding:22px 0; border-top:1px solid var(--line)}
+.pub:first-child{border-top:none; padding-top:4px}
+.pub-year{font-family:var(--serif); font-size:1.05rem; color:var(--muted); padding-top:2px}
+.pub-title{display:inline-block; font-family:var(--serif); font-size:1.18rem; font-weight:600;
+  color:var(--ink); line-height:1.35; margin-bottom:6px}
+a.pub-title:hover{color:var(--accent)}
+.pub-title.plain{color:var(--ink)}
+.pub-authors{margin:0 0 3px; font-size:.95rem; color:var(--body)}
+.pub-authors strong{color:var(--ink)}
+.pub-venue{margin:0 0 8px; font-size:.9rem; color:var(--muted); font-style:italic}
+.pub-blurb{margin:0 0 10px; font-size:.96rem; color:var(--body); max-width:64ch}
+.pub-badges a{display:inline-block; font-size:.78rem; font-weight:500; color:var(--accent);
+  border:1px solid var(--line); border-radius:6px; padding:2px 9px; margin-right:6px; background:#fff}
+.pub-badges a:hover{border-color:var(--accent); text-decoration:none; background:#f2f6fb}
 
-/* ============ publications ============ */
-.pubs{list-style:none; padding:0; margin:0; display:grid; gap:14px}
-.pubs li{display:flex; gap:18px; background:var(--card); border:1px solid var(--line);
-  border-radius:var(--radius); padding:18px 20px; align-items:flex-start}
-.pub-year{font-family:"JetBrains Mono",monospace; font-weight:600; color:var(--accent3);
-  min-width:48px; padding-top:2px}
-.pub-title{margin:0 0 4px; font-weight:600}
-.pub-meta{margin:0; color:var(--muted); font-size:.9rem}
+/* ============================ work grid ============================ */
+.work-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px 34px}
+.work-grid article{border-left:2px solid var(--line); padding-left:18px}
+.work-grid h3{margin:0 0 6px; font-size:1.08rem}
+.work-grid p{margin:0; color:var(--body); font-size:.96rem}
+.work-grid .tags{margin-top:10px; font-family:var(--sans); font-size:.8rem; color:var(--muted)}
 
-/* ============ timeline ============ */
-.timeline{position:relative; margin-left:6px; padding-left:26px; border-left:2px solid var(--line)}
-.tl-item{position:relative; padding-bottom:26px}
-.tl-dot{position:absolute; left:-34px; top:4px; width:14px; height:14px; border-radius:50%;
-  background:var(--grad); box-shadow:0 0 0 4px var(--bg)}
-.tl-role{margin:0; font-weight:600} .tl-role strong{color:var(--accent)}
-.tl-when{margin:2px 0 8px; color:var(--muted2); font-size:.86rem; font-family:"JetBrains Mono",monospace}
-.tl-body p:last-child{color:var(--muted); margin:0}
+/* ============================ experience ============================ */
+.exp-item{display:grid; grid-template-columns:150px 1fr; gap:16px; padding:20px 0; border-top:1px solid var(--line)}
+.exp-item:first-child{border-top:none}
+.exp-when{font-size:.88rem; color:var(--muted); font-family:var(--sans); padding-top:3px}
+.exp-role{margin:0; font-family:var(--serif); font-size:1.12rem; font-weight:600; color:var(--ink)}
+.exp-org{margin:2px 0 8px; color:var(--accent); font-size:.95rem; font-weight:500}
+.exp-what p:last-child{margin:0; color:var(--body); font-size:.96rem}
 
-/* ============ footer ============ */
-.footer{border-top:1px solid var(--line); margin-top:40px; padding:30px 22px; text-align:center}
-.footer .muted{color:var(--muted2); font-size:.85rem}
-.muted{color:var(--muted)}
+/* ============================ expertise ============================ */
+.exp-cols{display:grid; grid-template-columns:1fr 1fr; gap:20px 36px}
+.exp-cols h4{margin:0 0 4px; font-size:1rem; font-family:var(--sans); color:var(--accent)}
+.exp-cols p{margin:0; color:var(--body); font-size:.94rem}
 
-/* ============ responsive ============ */
-@media (max-width:820px){
-  .hero-grid{grid-template-columns:1fr} .hero-badge{order:-1}
-  .hero-badge .monogram{width:92px; height:92px; border-radius:20px; font-size:2.1rem}
-  .metrics{grid-template-columns:repeat(2,1fr)}
-  .skills,.work{grid-template-columns:1fr}
+/* ============================ footer ============================ */
+.site-footer{border-top:1px solid var(--line); padding:30px 0; text-align:center}
+.site-footer .links a{color:var(--body); font-size:.92rem}
+.site-footer .links span{margin:0 8px; color:var(--line)}
+.site-footer .fine{color:var(--muted); font-size:.82rem; margin:8px 0 0}
+
+/* ============================ responsive ============================ */
+@media (max-width:720px){
+  body{font-size:16px}
+  .topnav{display:none}
+  .stat-row{grid-template-columns:1fr 1fr; gap:20px 16px}
+  .work-grid,.exp-cols{grid-template-columns:1fr}
+  .pub{grid-template-columns:1fr} .pub-year{padding-top:0}
+  .exp-item{grid-template-columns:1fr; gap:4px}
 }

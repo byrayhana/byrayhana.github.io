@@ -1,20 +1,21 @@
 title: Reyhan Bayraktar
-tagline: Applied AI / ML Research Engineer
+tagline: AI Research Engineer
 description: >-
-  Applied AI / ML Research Engineer specializing in large language models —
-  training, high-performance inference, retrieval/RAG, evaluation, and agentic
-  systems, with a focus on Turkish-language and legal-domain NLP.
+  Reyhan Bayraktar — AI Research Engineer at NewMind AI. Research and engineering
+  on large language models: pretraining, high-performance inference, retrieval,
+  evaluation, and agentic systems, with a focus on Turkish and legal-domain NLP.
 author: Reyhan Bayraktar
-email: rbayraktar@newmind.ai
+email: reyhanbyrktrr@gmail.com
 url: "https://byrayhana.github.io"
 baseurl: ""
 
-# Social / profile links (edit freely)
+# Profile links (edit freely)
 github_user: byrayhana
 huggingface_user: byrayhana
+linkedin_url: "https://www.linkedin.com/in/reyhan-bayraktar/"
+affiliation: "NewMind AI"
 location: "Istanbul, Türkiye"
 
-# Build
 markdown: kramdown
 permalink: pretty
 exclude:
@@ -22,3 +23,4 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
+  - preview.local.html
