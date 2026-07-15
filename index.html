@@ -51,8 +51,109 @@ layout: default
   </div>
 </section>
 
+<!-- ===================== PROJECTS ===================== -->
+<section id="projects" class="section alt">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <p class="section-note">Recent work at NewMind AI across the LLM stack — training, inference, retrieval,
+      evaluation, and agents. Key technologies <span class="kw" style="margin:0">highlighted</span>.</p>
+
+    <div class="proj-cat">Model Training &amp; HPC</div>
+    <div class="proj-grid">
+      <article class="proj">
+        <div class="proj-h"><h3>Turkish Diffusion Language Models</h3><span class="lang">Lead / sole researcher</span></div>
+        <p>Pretrained <b>1.7B-parameter Turkish diffusion LMs</b> at multiple context lengths (512→2048) on the
+           BSC MareNostrum 5 supercomputer, and built a from-scratch evaluation harness (diffusion-ELBO
+           perplexity, generation quality, context-scaling). Handled real multi-node cluster engineering.</p>
+        <p class="hl">4,356 GPU-hours of pretraining · checkpoints released on Hugging Face</p>
+        <div><span class="kw">Diffusion LM</span><span class="kw">Megatron / MegaDLMs</span><span class="kw">PyTorch</span><span class="kw">SLURM / HPC</span><span class="kw">Tokenizer design</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3>EN→TR Machine Translation with RL</h3><span class="lang">Sole author</span></div>
+        <p>Reinforcement-learning fine-tuning (<b>GSPO</b>) of an English→Turkish translation model with an
+           R1-style reasoning format and <b>COMET / BLEU / chrF</b> reward shaping over a 7,280-example
+           chain-of-thought dataset.</p>
+        <div><span class="kw">RL fine-tuning</span><span class="kw">GSPO</span><span class="kw">COMET</span><span class="kw">Reward modeling</span></div>
+      </article>
+    </div>
+
+    <div class="proj-cat">Inference &amp; Serving</div>
+    <div class="proj-grid">
+      <article class="proj">
+        <div class="proj-h"><h3>Frontier-Model Inference &amp; Serving</h3><span class="lang">Engineer</span></div>
+        <p>Brought up and benchmarked <b>~20 frontier model families</b> (Qwen3/3.5, Kimi K2, DeepSeek-V4,
+           MiniMax, NVIDIA Nemotron, StepFun, Gemma-4, GLM) across <b>vLLM</b> &amp; <b>SGLang</b> and
+           FP8 / NVFP4 / GGUF quantization — including multi-node MoE serving and a CUDA
+           forward-compatibility fix.</p>
+        <p class="hl">Ray TP16 +33% over MultiProcessing on a 235B MoE · NVFP4 model at 1,853 tok/s on 2×H200</p>
+        <div><span class="kw">vLLM</span><span class="kw">SGLang</span><span class="kw">Quantization</span><span class="kw">Multi-node MoE</span><span class="kw">CUDA</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3>On-Prem LLM Serving Platform</h3><span class="lang">Lead engineer / architect</span></div>
+        <p>Led benchmarking, deployment, and architecture for running an internal LLM document-intelligence
+           platform fully <b>on-prem</b> with self-hosted models: a GPU×model×precision benchmark harness, an
+           OpenAI-compatible <b>tool-call shim</b> for non-native models, 16 deployment recipes, and formal
+           architecture reports.</p>
+        <div><span class="kw">On-prem serving</span><span class="kw">Tool-calling</span><span class="kw">Benchmarking</span><span class="kw">C4 architecture</span></div>
+      </article>
+    </div>
+
+    <div class="proj-cat">Agents, Retrieval &amp; Evaluation</div>
+    <div class="proj-grid">
+      <article class="proj">
+        <div class="proj-h"><h3>Multi-Agent RAG for Legal Documents</h3><span class="lang">Core engineer · 61 commits</span></div>
+        <p>Built major parts of a <b>hierarchical multi-agent RAG</b> platform for legal/financial document
+           analysis: an orchestrator decomposing queries into subtasks, up to <b>16 parallel
+           citation-grounded subagents</b>, a claim/citation reviewer, and a report writer. Authored the
+           model-comparison benchmark suite (position-debiased LLM-as-judge).</p>
+        <div><span class="kw">Multi-agent</span><span class="kw">RAG</span><span class="kw">MCP</span><span class="kw">Hybrid retrieval (RRF)</span><span class="kw">Citation grounding</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3>LLM Evaluation &amp; Benchmarking</h3><span class="lang">Designer / contributor</span></div>
+        <p>Designed evaluation systems using <b>asymmetry-of-verification</b> task design, adversarial
+           difficulty filtering, calibration (<b>Brier / ECE</b>), and <b>LLM-as-judge</b> grading — used to
+           qualify models for production, plus document-extraction and speculative-decoding studies.</p>
+        <p class="hl">Debunked a headline "4–5× speedup" claim as a benchmarking artifact — avoiding a costly wrong turn</p>
+        <div><span class="kw">Benchmark design</span><span class="kw">LLM-as-judge</span><span class="kw">Calibration</span><span class="kw">Langfuse</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3>Retrieval &amp; Semantic Caching</h3><span class="lang">Sole researcher</span></div>
+        <p>Designed a <b>4-layer semantic cache</b> for a Turkish-legal RAG pipeline (tenant isolation,
+           versioning, audit logging), and reimplemented &amp; benchmarked the <b>LEANN</b> low-storage vector
+           index against FAISS Flat and IVF-PQ — quantifying the storage / latency trade-off.</p>
+        <div><span class="kw">RAG</span><span class="kw">pgvector</span><span class="kw">FAISS</span><span class="kw">LEANN</span><span class="kw">Neo4j / GraphRAG</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3>LLM Observability &amp; Query Routing</h3><span class="lang">Sole author</span></div>
+        <p>Built an <b>LLM-trace observability UI</b> (RCA / prompt-quality / summary analyses with a
+           natural-language assistant) and an ML pipeline predicting agentic-query execution requirements
+           (intent, context strategy, tool decision) from Turkish conversation traces.</p>
+        <div><span class="kw">Observability</span><span class="kw">Next.js</span><span class="kw">Langfuse</span><span class="kw">Intent modeling</span></div>
+      </article>
+    </div>
+
+    <div class="proj-cat">Applied Pipelines</div>
+    <div class="proj-grid">
+      <article class="proj">
+        <div class="proj-h"><h3>Automated Research &amp; News Pipelines</h3><span class="lang">Contributor / author</span></div>
+        <p>LLM-powered pipelines turning web/PDF sources into research briefings and bilingual news digests —
+           multi-source ingestion, deduplication, summarization, and DOCX / messaging delivery — deployed to
+           <b>Kubernetes</b>; migrated storage from SQLite to <b>MongoDB</b>.</p>
+        <div><span class="kw">Python</span><span class="kw">LLM pipelines</span><span class="kw">MongoDB</span><span class="kw">Docker / K8s</span><span class="kw">CI/CD</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3>On-Device Ontology Extraction &amp; OCR</h3><span class="lang">Sole author</span></div>
+        <p>Evaluated layout-grounded OCR and <b>on-device</b> ontology extraction (LiquidAI LFM2.5-230M) for
+           Turkish legal documents, and benchmarked a 9B vision-language model for structured document
+           extraction against larger baselines.</p>
+        <div><span class="kw">OCR</span><span class="kw">VLM</span><span class="kw">Ontology extraction</span><span class="kw">On-device</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== PUBLICATIONS ===================== -->
-<section id="publications" class="section alt">
+<section id="publications" class="section">
   <div class="wrap">
     <h2>Publications</h2>
     <p class="section-note">Author list as published; <strong>my name</strong> in bold.</p>
@@ -147,123 +248,6 @@ layout: default
       </li>
 
     </ol>
-  </div>
-</section>
-
-<!-- ===================== SELECTED WORK ===================== -->
-<section id="work" class="section">
-  <div class="wrap">
-    <h2>Professional Work — NewMind AI</h2>
-    <div class="work-grid">
-      <article>
-        <h3>Turkish Diffusion Language Models</h3>
-        <p>Pretrained 1.7B-parameter Turkish diffusion language models at multiple context lengths on
-           MareNostrum 5, with a full evaluation harness (perplexity, generation quality, context-scaling).</p>
-        <p class="tags">PyTorch · Megatron / MegaDLMs · HPC · Tokenizer design</p>
-      </article>
-      <article>
-        <h3>Frontier-Model Inference &amp; Serving</h3>
-        <p>Brought up and benchmarked ~20 frontier model families (Qwen3/3.5, Kimi K2, DeepSeek-V4, MiniMax,
-           NVIDIA Nemotron, StepFun, Gemma-4, GLM) across vLLM/SGLang and FP8/NVFP4/GGUF quantization.</p>
-        <p class="tags">vLLM · SGLang · Quantization · Multi-node MoE</p>
-      </article>
-      <article>
-        <h3>Retrieval, RAG &amp; Semantic Caching</h3>
-        <p>Multi-layer semantic caching for RAG pipelines and a from-scratch reimplementation and benchmark
-           of the LEANN low-storage vector index against FAISS Flat and IVF-PQ.</p>
-        <p class="tags">FAISS · Neo4j · pgvector · BGE-M3</p>
-      </article>
-      <article>
-        <h3>LLM Evaluation Frameworks</h3>
-        <p>Benchmark and evaluation harnesses using asymmetry-of-verification task design, adversarial
-           difficulty filtering, calibration (Brier / ECE), and LLM-as-judge grading.</p>
-        <p class="tags">Benchmarking · Calibration · LLM-as-judge</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== OPEN-SOURCE PROJECTS ===================== -->
-<section id="projects" class="section">
-  <div class="wrap">
-    <h2>Projects</h2>
-    <p class="section-note">A selection of open-source projects on
-      <a href="https://github.com/byrayhana">GitHub</a> — computer vision, Turkish NLP, and ML/data science.
-      Keywords <span class="kw" style="margin:0">highlighted</span>.</p>
-
-    <div class="proj-cat">Computer Vision &amp; Image Processing</div>
-    <div class="proj-grid">
-      <article class="proj">
-        <div class="proj-h"><h3><a href="https://github.com/byrayhana/Brain-Tumor-Detection">Brain Tumor Detection</a></h3><span class="lang">Jupyter</span></div>
-        <p>Classifies MRI brain scans as tumor / no-tumor with a convolutional neural network — an end-to-end medical-imaging pipeline from preprocessing to evaluation.</p>
-        <div><span class="kw">CNN</span><span class="kw">Medical Imaging</span><span class="kw">TensorFlow / Keras</span><span class="kw">Image Classification</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3><a href="https://github.com/byrayhana/Object-detection-with-pretrained-YOLOv3-416">YOLOv3 Object-Detection Suite</a></h3><span class="lang">Python</span></div>
-        <p>Object detection with a pretrained <b>YOLOv3-416</b> model — extended with a <a href="https://github.com/byrayhana/object-detection-with-Non-Maximum-Supresssion-method">Non-Maximum-Suppression</a> implementation and a <a href="https://github.com/byrayhana/Real-time-object-detection-with-web-cam">real-time webcam</a> inference loop.</p>
-        <div><span class="kw">YOLOv3</span><span class="kw">OpenCV</span><span class="kw">Non-Max Suppression</span><span class="kw">Real-time</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3><a href="https://github.com/byrayhana/realtime-shape-detection-">Real-time Shape &amp; Color Detection</a></h3><span class="lang">Python</span></div>
-        <p>Classic OpenCV pipelines running on a live camera feed: <a href="https://github.com/byrayhana/OpenCV-color-detection">HSV color thresholding</a> and contour-based shape recognition.</p>
-        <div><span class="kw">OpenCV</span><span class="kw">Contours</span><span class="kw">HSV Thresholding</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3><a href="https://github.com/byrayhana/underwater-color-correction">Underwater Color Correction</a></h3><span class="lang">Python</span></div>
-        <p>Image-restoration for underwater imagery — correcting color cast and attenuation to recover natural tones (basis for the ICCIDA 2024 naval-mine detection work).</p>
-        <div><span class="kw">Image Restoration</span><span class="kw">OpenCV</span><span class="kw">Underwater Imaging</span></div>
-      </article>
-    </div>
-
-    <div class="proj-cat">Natural Language Processing (Turkish)</div>
-    <div class="proj-grid">
-      <article class="proj">
-        <div class="proj-h"><h3><a href="https://github.com/byrayhana/TurkceHaberSiniflandirma">Turkish News Classification</a></h3><span class="lang">Jupyter</span></div>
-        <p>Multi-class text classification of Turkish news articles — text preprocessing, vectorization, and supervised modeling for a morphologically rich language.</p>
-        <div><span class="kw">Turkish NLP</span><span class="kw">Text Classification</span><span class="kw">TF-IDF</span><span class="kw">scikit-learn</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3><a href="https://github.com/byrayhana/Turkish-tweets-sentiment-analysis">Turkish Tweets Sentiment Analysis</a> ★</h3><span class="lang">Jupyter</span></div>
-        <p>Sentiment classification of Turkish tweets — a full NLP pipeline (cleaning, tokenization, feature extraction, classification) tuned for informal, noisy social text.</p>
-        <div><span class="kw">Sentiment Analysis</span><span class="kw">Turkish NLP</span><span class="kw">NLTK</span><span class="kw">Feature Engineering</span></div>
-      </article>
-    </div>
-
-    <div class="proj-cat">Machine Learning &amp; Data Science</div>
-    <div class="proj-grid">
-      <article class="proj">
-        <div class="proj-h"><h3><a href="https://github.com/byrayhana/dvc-cml-churn">Churn Prediction with MLOps</a></h3><span class="lang">Python</span></div>
-        <p>End-to-end customer-churn model wired into an <b>MLOps</b> workflow — data &amp; model versioning with <b>DVC</b> and automated metric reporting on every commit via <b>CML</b> / GitHub Actions.</p>
-        <div><span class="kw">MLOps</span><span class="kw">DVC</span><span class="kw">CML</span><span class="kw">CI/CD</span><span class="kw">GitHub Actions</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3><a href="https://github.com/byrayhana/CustomerLifeTimeValue">Customer Lifetime Value</a></h3><span class="lang">Python</span></div>
-        <p>Probabilistic CLV prediction using <b>BG/NBD</b> and <b>Gamma-Gamma</b> models to forecast expected transactions and revenue per customer.</p>
-        <div><span class="kw">CLV</span><span class="kw">BG-NBD</span><span class="kw">Probabilistic Modeling</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3><a href="https://github.com/byrayhana/RFMAnalytics">RFM Customer Segmentation</a></h3><span class="lang">Python</span></div>
-        <p>Segments customers by <b>Recency-Frequency-Monetary</b> scoring to define actionable marketing personas from raw transaction data.</p>
-        <div><span class="kw">RFM</span><span class="kw">Segmentation</span><span class="kw">pandas</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3><a href="https://github.com/byrayhana/Mesasurement-Problems">A/B Testing &amp; Measurement</a></h3><span class="lang">Python</span></div>
-        <p>Statistical hypothesis testing and <b>A/B test</b> design — confidence intervals, significance tests, and conversion-comparison methodology.</p>
-        <div><span class="kw">A/B Testing</span><span class="kw">Hypothesis Testing</span><span class="kw">Statistics</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3><a href="https://github.com/byrayhana/TurkishTVSeriesForecasting">Turkish TV-Series Forecasting</a></h3><span class="lang">Jupyter</span></div>
-        <p>Time-series forecasting of TV-series ratings/viewership — trend and seasonality modeling on real Turkish broadcast data.</p>
-        <div><span class="kw">Time Series</span><span class="kw">Forecasting</span><span class="kw">pandas</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3><a href="https://github.com/byrayhana/library-automation-system-GUI">Library Automation System</a> ★</h3><span class="lang">Java</span></div>
-        <p>Desktop library-management application with a full GUI and a persistent database backend — member, book, and lending CRUD workflows.</p>
-        <div><span class="kw">Java</span><span class="kw">Swing</span><span class="kw">SQLite</span><span class="kw">CRUD</span></div>
-      </article>
-    </div>
-
-    <p class="proj-more"><a href="https://github.com/byrayhana?tab=repositories">See all 30+ repositories on GitHub →</a></p>
   </div>
 </section>
 

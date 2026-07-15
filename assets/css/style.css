@@ -105,6 +105,8 @@ a.pub-title:hover{color:var(--accent)}
 .proj .lang{font-family:var(--mono); font-size:.7rem; color:var(--muted); white-space:nowrap}
 .proj p{margin:8px 0 11px; font-size:.9rem; color:var(--body)}
 .proj p b{color:var(--ink); font-weight:600}
+.proj .hl{font-size:.83rem; color:var(--accent2); background:rgba(94,234,212,.08);
+  border-left:2px solid var(--accent2); border-radius:0 6px 6px 0; padding:6px 10px; margin:0 0 11px}
 .kw{display:inline-block; font-family:var(--mono); font-size:.71rem; color:var(--accent);
   background:rgba(124,156,255,.11); border:1px solid var(--line2); border-radius:6px;
   padding:2px 8px; margin:0 5px 5px 0}
