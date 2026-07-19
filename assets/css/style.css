@@ -113,6 +113,32 @@ a.pub-title:hover{color:var(--accent)}
 .proj-more{margin-top:18px; text-align:center}
 .proj-more a{font-family:var(--mono); font-size:.85rem; color:var(--accent2)}
 
+/* ============================ results / charts ============================ */
+.results-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:16px; margin-bottom:18px}
+.figure{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:18px 20px}
+.figure h3{font-size:.98rem; margin:0 0 2px; font-family:var(--head)}
+.figure .cap{font-size:.79rem; color:var(--muted); margin:0 0 12px}
+.figure svg{display:block; max-width:100%}
+.legend{display:flex; flex-wrap:wrap; gap:16px; margin-top:12px; font-size:.8rem; color:var(--body)}
+.legend span{display:inline-flex; align-items:center; gap:7px}
+.legend i{width:11px; height:11px; border-radius:3px}
+.donut-wrap{display:flex; flex-direction:column}
+.donut-legend{display:grid; gap:8px; margin-top:6px; font-size:.82rem}
+.donut-legend div{display:flex; align-items:center; gap:9px; color:var(--body)}
+.donut-legend i{width:11px; height:11px; border-radius:3px; flex:0 0 auto}
+.donut-legend b{margin-left:auto; font-family:var(--mono); color:var(--ink)}
+/* flow diagram */
+.flow{display:flex; flex-wrap:wrap; align-items:stretch; gap:9px}
+.flow .node{flex:1 1 140px; background:var(--bg2); border:1px solid var(--line2); border-radius:12px;
+  padding:12px 14px; font-family:var(--head); font-weight:600; font-size:.88rem; color:var(--ink)}
+.flow .node small{display:block; font-family:var(--sans); font-weight:400; font-size:.75rem;
+  color:var(--muted); margin-top:3px; line-height:1.4}
+.flow .node.hl{border-color:var(--accent)}
+.flow .node.fan{box-shadow:4px 4px 0 -1px var(--bg2), 4px 4px 0 0 var(--line2),
+  8px 8px 0 -1px var(--bg2), 8px 8px 0 0 var(--line2); margin-right:8px}
+.flow .arrow{align-self:center; color:var(--accent2); font-size:1.15rem; flex:0 0 auto}
+@media(max-width:720px){ .results-grid{grid-template-columns:1fr} .flow .arrow{transform:rotate(90deg)} }
+
 /* ============================ experience ============================ */
 .exp-item{display:grid; grid-template-columns:150px 1fr; gap:18px; padding:22px 0; border-top:1px solid var(--line)}
 .exp-item:first-child{border-top:none}
