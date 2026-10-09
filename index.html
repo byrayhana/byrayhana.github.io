@@ -9,7 +9,7 @@ layout: default
     <h1>Reyhan Bayraktar</h1>
     <p class="summary">
       I work across the full lifecycle of large language models — pretraining and fine-tuning,
-      high-performance multi-node inference, retrieval, evaluation, and agentic systems — with a
+      high-performance inference, retrieval, evaluation of agentic systems, and multi-agent systems — with a
       research focus on <strong>Turkish</strong> and <strong>legal-domain</strong> natural language
       processing. Five publications across NLP, information retrieval, and efficient fine-tuning;
       open-source Turkish language models.
@@ -35,6 +35,12 @@ layout: default
         <strong>Barcelona Supercomputing Center's MareNostrum&nbsp;5</strong> supercomputer (6,000+ GPU-hours),
         stood up and benchmarked around twenty frontier model families across quantization formats, and
         built retrieval, evaluation, and multi-agent systems for Turkish legal-domain applications.
+      </p>
+      <p>
+        More recently my work has centred on on-prem LLM inference on modern NVIDIA hardware, evaluation
+        of agentic LLM systems, and research on monitoring and overseeing LLM agents. In October 2026 I
+        released <a href="#writing">mecellem-legal-bench</a>, an open benchmark of Turkish legal practice
+        questions graded point by point, with a leaderboard of thirteen models.
       </p>
       <p>
         My approach is measurement-driven: I care about rigorous benchmarking protocols, calibration, and
@@ -96,6 +102,19 @@ layout: default
            architecture reports.</p>
         <div><span class="kw">On-prem serving</span><span class="kw">Tool-calling</span><span class="kw">Benchmarking</span><span class="kw">C4 architecture</span></div>
       </article>
+      <article class="proj">
+        <div class="proj-h"><h3>Inference on NVIDIA GB300 &amp; DGX Spark</h3><span class="lang">Engineer</span></div>
+        <p>Deployed and benchmarked open-weight MoE models on <b>NVIDIA GB300</b>, <b>DGX Spark (GB10)</b>
+           and <b>H200</b> systems, and sized hardware for enterprise on-prem deployments using production
+           workload profiles.</p>
+        <div><span class="kw">vLLM</span><span class="kw">NVFP4 / FP8</span><span class="kw">Capacity planning</span><span class="kw">On-prem</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3>Speculative Decoding</h3><span class="lang">Engineer</span></div>
+        <p>Compared speculative-decoding methods (<b>EAGLE-3</b>, <b>MTP</b>, <b>DSpark</b>, <b>DFlash</b>,
+           n-gram) across model sizes and hardware, and tuned serving configurations for real workloads.</p>
+        <div><span class="kw">Speculative decoding</span><span class="kw">vLLM</span><span class="kw">SGLang</span><span class="kw">Throughput / latency</span></div>
+      </article>
     </div>
 
     <div class="proj-cat">Agents, Retrieval &amp; Evaluation</div>
@@ -115,6 +134,19 @@ layout: default
            qualify models for production, plus document-extraction and speculative-decoding studies.</p>
         <p class="hl">Debunked a headline "4–5× speedup" claim as a benchmarking artifact — avoiding a costly wrong turn</p>
         <div><span class="kw">Benchmark design</span><span class="kw">LLM-as-judge</span><span class="kw">Calibration</span><span class="kw">Langfuse</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3>Agentic LLM Evaluation</h3><span class="lang">Main developer</span></div>
+        <p>Evaluation platform for LLM agents working over <b>MCP</b> tools — rubric-based
+           <b>LLM-as-judge</b> grading, tool-use, cost and latency metrics, and trace-level behaviour
+           profiling. Designed and released the open <b>mecellem-legal-bench</b> on it (see Writing).</p>
+        <div><span class="kw">Agent evaluation</span><span class="kw">MCP</span><span class="kw">Rubric design</span><span class="kw">FastAPI / React</span><span class="kw">ClickHouse</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3>Monitoring &amp; Oversight of LLM Agents</h3><span class="lang">Research contributor</span></div>
+        <p>Research on observing and overseeing LLM agent harnesses: call-level trace profiling, behaviour
+           labelling, and lightweight monitors that can flag agent misbehaviour at runtime.</p>
+        <div><span class="kw">Agent oversight</span><span class="kw">Trace profiling</span><span class="kw">Monitors</span><span class="kw">Research</span></div>
       </article>
       <article class="proj">
         <div class="proj-h"><h3>Retrieval &amp; Semantic Caching</h3><span class="lang">Sole researcher</span></div>
@@ -147,6 +179,12 @@ layout: default
            Turkish legal documents, and benchmarked a 9B vision-language model for structured document
            extraction against larger baselines.</p>
         <div><span class="kw">OCR</span><span class="kw">VLM</span><span class="kw">Ontology extraction</span><span class="kw">On-device</span></div>
+      </article>
+      <article class="proj">
+        <div class="proj-h"><h3>On-Device Turkish PII Detection</h3><span class="lang">Evaluator</span></div>
+        <p>Evaluated Turkish PII / named-entity models for on-device and in-browser privacy masking, including
+           ONNX export and <b>WebGPU</b> vs WASM runtime behaviour.</p>
+        <div><span class="kw">PII / NER</span><span class="kw">ONNX Runtime</span><span class="kw">WebGPU</span><span class="kw">Privacy</span></div>
       </article>
     </div>
   </div>
@@ -233,8 +271,34 @@ layout: default
   </div>
 </section>
 
+<!-- ===================== WRITING ===================== -->
+<section id="writing" class="section alt">
+  <div class="wrap">
+    <h2>Writing &amp; Open Benchmarks</h2>
+    <ol class="pub-list">
+
+      <li class="pub">
+        <div class="pub-year">2026</div>
+        <div class="pub-main">
+          <a class="pub-title" href="https://newmind.ai/research/mecellem-legal-bench/">
+            mecellem-legal-bench: Do models apply Turkish law, or just cite it?</a>
+          <p class="pub-authors"><strong>Reyhan Bayraktar</strong></p>
+          <p class="pub-venue">NewMind AI Research blog · 8 Oct 2026 ·
+            <a href="https://huggingface.co/datasets/newmindai/mecellem-legal-bench">Dataset</a> ·
+            <a href="https://huggingface.co/spaces/newmindai/mecellem-legal-bench">Leaderboard</a></p>
+          <p class="pub-blurb">An open benchmark of 42 Turkish legal practice questions, each answer graded
+            point by point on 367 criteria along Issue, Rule, Application and Conclusion (IRAC). Thirteen
+            models scored: application is the weakest step (median 72.2% of criteria met, against 91.7% for
+            the issue), and the best model is fully right on all three attempts for only 42.9% of questions.</p>
+        </div>
+      </li>
+
+    </ol>
+  </div>
+</section>
+
 <!-- ===================== PUBLICATIONS ===================== -->
-<section id="publications" class="section alt">
+<section id="publications" class="section">
   <div class="wrap">
     <h2>Publications</h2>
     <p class="section-note">Author list as published; <strong>my name</strong> in bold.</p>
@@ -312,7 +376,7 @@ layout: default
 </section>
 
 <!-- ===================== EXPERIENCE ===================== -->
-<section id="experience" class="section">
+<section id="experience" class="section alt">
   <div class="wrap">
     <h2>Experience</h2>
     <div class="exp">
@@ -322,7 +386,8 @@ layout: default
           <p class="exp-role">AI Research Engineer</p>
           <p class="exp-org">NewMind AI · Istanbul</p>
           <p>Full LLM lifecycle for Turkish legal-domain NLP — pretraining &amp; fine-tuning, high-performance
-             inference, retrieval / RAG, evaluation, and agentic systems. Four publications in the period.</p>
+             inference, retrieval / RAG, evaluation, and agentic systems; more recently on-prem inference and
+             monitoring of LLM agents. Four publications in the period.</p>
         </div>
       </div>
       <div class="exp-item">
@@ -339,18 +404,18 @@ layout: default
 </section>
 
 <!-- ===================== EXPERTISE ===================== -->
-<section id="expertise" class="section alt">
+<section id="expertise" class="section">
   <div class="wrap">
     <h2>Expertise</h2>
     <div class="exp-cols">
       <div><h4>LLM Training</h4><p>Diffusion LMs · long-context pretraining · SFT · RL fine-tuning (GSPO) ·
         reward modeling (COMET/BLEU/chrF) · EN→TR machine translation</p></div>
       <div><h4>Inference &amp; Serving</h4><p>vLLM · SGLang · TensorRT-LLM · multi-node MoE ·
-        quantization (FP8/NVFP4/AWQ/GGUF) · speculative decoding · CUDA compat</p></div>
+        quantization (FP8/NVFP4/AWQ/GGUF) · speculative decoding · ONNX Runtime · H200 / GB300 / DGX Spark</p></div>
       <div><h4>Retrieval &amp; RAG</h4><p>pgvector · Qdrant · Elasticsearch · Neo4j/GraphRAG · FAISS ·
         ColBERT late-interaction · BGE-M3 · semantic caching</p></div>
       <div><h4>Agentic &amp; Evaluation</h4><p>Multi-agent orchestration · MCP · hierarchical RAG ·
-        benchmark design · calibration (Brier/ECE) · LLM-as-judge</p></div>
+        benchmark design · rubric design · LLM-as-judge · agent monitoring</p></div>
       <div><h4>Engineering</h4><p>Python · TypeScript · Rust · FastAPI · Next.js/React ·
         PostgreSQL/MongoDB/ClickHouse · Docker · Kubernetes · CI/CD</p></div>
       <div><h4>HPC</h4><p>BSC MareNostrum 5 · SLURM · Singularity · Ray · NCCL/InfiniBand · TRUBA</p></div>
