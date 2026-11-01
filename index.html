@@ -40,7 +40,7 @@ layout: default
         More recently my work has centred on on-prem LLM inference on modern NVIDIA hardware, evaluation
         of agentic LLM systems, and research on monitoring and overseeing LLM agents. In October 2026 I
         released <a href="#writing">mecellem-legal-bench</a>, an open benchmark of Turkish legal practice
-        questions graded point by point, with a leaderboard of thirteen models.
+        questions graded point by point, with a leaderboard of sixteen models.
       </p>
       <p>
         My approach is measurement-driven: I care about rigorous benchmarking protocols, calibration, and
@@ -136,10 +136,12 @@ layout: default
         <div><span class="kw">Benchmark design</span><span class="kw">LLM-as-judge</span><span class="kw">Calibration</span><span class="kw">Langfuse</span></div>
       </article>
       <article class="proj">
-        <div class="proj-h"><h3>Agentic LLM Evaluation</h3><span class="lang">Main developer</span></div>
-        <p>Evaluation platform for LLM agents working over <b>MCP</b> tools — rubric-based
-           <b>LLM-as-judge</b> grading, tool-use, cost and latency metrics, and trace-level behaviour
-           profiling. Designed and released the open <b>mecellem-legal-bench</b> on it (see Writing).</p>
+        <div class="proj-h"><h3>Agent Trajectory Evaluation &amp; Oversight</h3><span class="lang">Lead developer</span></div>
+        <p>Trajectory-level evaluation and oversight of the company's production agent harness working over
+           <b>MCP</b> tools — every trajectory traced end to end and graded step by step: tool selection and
+           call order, citation grounding, rubric-based <b>LLM-as-judge</b>, cost and latency. It is the release
+           gate for new MCP tool servers and oversees live production trajectories; the open
+           <b>mecellem-legal-bench</b> was designed and run on it (see Writing).</p>
         <div><span class="kw">Agent evaluation</span><span class="kw">MCP</span><span class="kw">Rubric design</span><span class="kw">FastAPI / React</span><span class="kw">ClickHouse</span></div>
       </article>
       <article class="proj">
