@@ -1,49 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ site.lang }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ site.title }} · {{ site.tagline }}</title>
-  <meta name="description" content="{{ site.description }}">
+  <meta name="description" content="{{ site.description | strip }}">
   <meta name="author" content="{{ site.author }}">
+  <link rel="canonical" href="{{ site.url }}/">
   <meta property="og:title" content="{{ site.title }} · {{ site.tagline }}">
-  <meta property="og:description" content="{{ site.description }}">
+  <meta property="og:description" content="{{ site.description | strip }}">
   <meta property="og:type" content="profile">
-  <meta property="og:url" content="{{ site.url }}">
+  <meta property="og:url" content="{{ site.url }}/">
+  <meta property="profile:first_name" content="Reyhan">
+  <meta property="profile:last_name" content="Bayraktar">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "{{ site.author }}",
+    "jobTitle": "{{ site.tagline }}",
+    "description": "{{ site.description | strip }}",
+    "url": "{{ site.url }}/",
+    "email": "mailto:{{ site.email }}",
+    "worksFor": { "@type": "Organization", "name": "{{ site.affiliation }}" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Istanbul Sabahattin Zaim University" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Istanbul", "addressCountry": "TR" },
+    "knowsAbout": ["LLM inference", "LLM evaluation", "AI agents", "vLLM", "SGLang", "Speculative decoding", "Retrieval-augmented generation", "Turkish NLP"],
+    "sameAs": [
+      "https://github.com/{{ site.github_user }}",
+      "https://huggingface.co/{{ site.huggingface_user }}",
+      "{{ site.linkedin_url }}",
+      "{{ site.scholar_url }}"
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230b0f1a'/><text x='16' y='23' font-family='monospace' font-weight='bold' font-size='17' fill='%237c9cff' text-anchor='middle'>R</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2316181d'/><text x='16' y='22' font-family='monospace' font-weight='bold' font-size='16' fill='%23d9f99d' text-anchor='middle'>rb</text></svg>">
 </head>
 <body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a href="#top" class="wordmark">Reyhan&nbsp;Bayraktar</a>
-      <nav class="topnav">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#results">Results</a>
-        <a href="#writing">Writing</a>
-        <a href="#publications">Publications</a>
-        <a href="#experience">Experience</a>
-        <a href="#expertise">Expertise</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="top">{{ content }}</main>
-
-  <footer class="site-footer">
-    <div class="wrap">
-      <p class="links">
-        <a href="mailto:{{ site.email }}">{{ site.email }}</a>
-        <span>·</span><a href="https://github.com/{{ site.github_user }}">GitHub</a>
-        <span>·</span><a href="https://huggingface.co/{{ site.huggingface_user }}">Hugging&nbsp;Face</a>
-        <span>·</span><a href="{{ site.linkedin_url }}">LinkedIn</a>
-      </p>
-      <p class="fine">© {{ 'now' | date: "%Y" }} {{ site.author }}</p>
-    </div>
+  <main>{{ content }}</main>
+  <footer class="foot">
+    <p>© {{ 'now' | date: "%Y" }} {{ site.author }} · <a href="#top">top ↑</a></p>
   </footer>
 </body>
 </html>

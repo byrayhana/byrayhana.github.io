@@ -2,425 +2,98 @@
 layout: default
 ---
 
-<!-- ===================== MASTHEAD ===================== -->
-<header class="masthead">
-  <div class="wrap">
-    <p class="kicker">AI Research Engineer · NewMind AI</p>
-    <h1>Reyhan Bayraktar</h1>
-    <p class="summary">
-      I work across the full lifecycle of large language models — pretraining and fine-tuning,
-      high-performance inference, retrieval, evaluation of agentic systems, and multi-agent systems — with a
-      research focus on <strong>Turkish</strong> and <strong>legal-domain</strong> natural language
-      processing. Five publications across NLP, information retrieval, and efficient fine-tuning;
-      open-source Turkish language models.
-    </p>
-    <p class="contact">
-      <a href="mailto:reyhanbyrktrr@gmail.com">reyhanbyrktrr@gmail.com</a>
-      <span class="sep">·</span><a href="https://github.com/byrayhana">GitHub</a>
-      <span class="sep">·</span><a href="https://huggingface.co/newmindai">Hugging&nbsp;Face</a>
-      <span class="sep">·</span><a href="https://www.linkedin.com/in/reyhan-bayraktar/">LinkedIn</a>
-      <span class="sep">·</span><span class="loc">Istanbul, Türkiye</span>
-    </p>
-  </div>
+<header id="top">
+  <h1>reyhan bayraktar</h1>
+  <p class="tag">GenAI Engineer · LLM inference, evaluation and agents</p>
+  <p class="intro">I serve large language models on hardware I can touch, and I measure them until the
+    numbers hold up. Many of my favourite results are speedups that turned out not to exist.</p>
+  <p class="intro">At NewMind AI in Istanbul I built the evaluation system for a production agent platform
+    and brought up around twenty open-weight model families on H200, GB300 and DGX Spark.</p>
+  <nav class="nav">
+    <a href="{{ site.scholar_url }}">scholar</a>
+    <a href="https://github.com/{{ site.github_user }}">github</a>
+    <a href="https://huggingface.co/{{ site.huggingface_user }}">huggingface</a>
+    <a href="{{ site.linkedin_url }}">linkedin</a>
+    <a href="mailto:{{ site.email }}">email</a>
+  </nav>
 </header>
 
-<!-- ===================== ABOUT ===================== -->
-<section id="about" class="section">
-  <div class="wrap">
-    <h2>About</h2>
-    <div class="prose">
-      <p>
-        I'm an AI Research Engineer at <strong>NewMind AI</strong>, where my work spans research and
-        production engineering for large language models. I have pretrained Turkish language models on the
-        <strong>Barcelona Supercomputing Center's MareNostrum&nbsp;5</strong> supercomputer (6,000+ GPU-hours),
-        stood up and benchmarked around twenty frontier model families across quantization formats, and
-        built retrieval, evaluation, and multi-agent systems for Turkish legal-domain applications.
-      </p>
-      <p>
-        More recently my work has centred on on-prem LLM inference on modern NVIDIA hardware, evaluation
-        of agentic LLM systems, and research on monitoring and overseeing LLM agents. In October 2026 I
-        released <a href="#writing">mecellem-legal-bench</a>, an open benchmark of Turkish legal practice
-        questions graded point by point, with a leaderboard of sixteen models.
-      </p>
-      <p>
-        My approach is measurement-driven: I care about rigorous benchmarking protocols, calibration, and
-        honest reporting of negative results. I am comfortable operating from the CUDA/driver level of
-        multi-node GPU serving up to shipping user-facing applications.
-      </p>
+<section id="work">
+  <h2>selected work</h2>
+
+  <div class="row">
+    <div class="k">2026 · eval</div>
+    <div>
+      <h3><a href="https://newmind.ai/research/mecellem-legal-bench/">mecellem-legal-bench</a></h3>
+      <p>An open benchmark that asks whether models apply the law or just cite it. 42 Turkish legal practice
+        questions, 367 rubric criteria, an LLM judge, and a public leaderboard of 16 frontier models.
+        <a href="https://huggingface.co/datasets/newmindai/mecellem-legal-bench">dataset</a> ·
+        <a href="https://huggingface.co/spaces/newmindai/mecellem-legal-bench">leaderboard</a></p>
+      <div class="log">judge agreement with reference verdicts → <mark>~90%</mark> · scored pass^3, infra failures kept out</div>
     </div>
-    <div class="stat-row">
-      <div class="stat"><span class="v">6,423</span><span class="k">GPU-hours · MareNostrum&nbsp;5</span></div>
-      <div class="stat"><span class="v">~20</span><span class="k">frontier models benchmarked</span></div>
-      <div class="stat"><span class="v">5</span><span class="k">publications</span></div>
-      <div class="stat"><span class="v">1T+</span><span class="k">param MoE models served</span></div>
+  </div>
+
+  <div class="row">
+    <div class="k">2026 · inference</div>
+    <div>
+      <h3>Benchmarks that lie</h3>
+      <p>A reported 4–5× speculative-decoding speedup turned out to be a comparison against a baseline with
+        CUDA graphs switched off. Same story with a model I had written off as slow. I now check the flags
+        before I believe the number.</p>
+      <div class="log">--enforce-eager: ~15 tok/s → graphs on: <mark>147 tok/s</mark></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="k">2026 · agents</div>
+    <div>
+      <h3>Grading agents, not answers</h3>
+      <p>Trajectory-level evaluation for a production agent platform on MCP tools. Each question runs k times,
+        each run is traced end to end, and each step is graded: which tool, in what order, whether the
+        citations are real, and what it cost. It became the release gate for new tool servers.</p>
+      <div class="log">every run traced · every tool call checked · <mark>pass^k</mark></div>
     </div>
   </div>
 </section>
 
-<!-- ===================== PROJECTS ===================== -->
-<section id="projects" class="section alt">
-  <div class="wrap">
-    <h2>Projects</h2>
-    <p class="section-note">Recent work at NewMind AI across the LLM stack — training, inference, retrieval,
-      evaluation, and agents. Key technologies <span class="kw" style="margin:0">highlighted</span>.</p>
-
-    <div class="proj-cat">Model Training &amp; HPC</div>
-    <div class="proj-grid">
-      <article class="proj">
-        <div class="proj-h"><h3>Turkish Diffusion Language Models</h3><span class="lang">Lead / sole researcher</span></div>
-        <p>Pretrained <b>1.7B-parameter Turkish diffusion LMs</b> at multiple context lengths (512→2048) on the
-           BSC MareNostrum 5 supercomputer, and built a from-scratch evaluation harness (diffusion-ELBO
-           perplexity, generation quality, context-scaling). Handled real multi-node cluster engineering.</p>
-        <p class="hl">4,356 GPU-hours of pretraining on the BSC MareNostrum 5 supercomputer</p>
-        <div><span class="kw">Diffusion LM</span><span class="kw">Megatron / MegaDLMs</span><span class="kw">PyTorch</span><span class="kw">SLURM / HPC</span><span class="kw">Tokenizer design</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3>EN→TR Machine Translation with RL</h3><span class="lang">Sole author</span></div>
-        <p>Reinforcement-learning fine-tuning (<b>GSPO</b>) of an English→Turkish translation model with an
-           R1-style reasoning format and <b>COMET / BLEU / chrF</b> reward shaping over a 7,280-example
-           chain-of-thought dataset.</p>
-        <div><span class="kw">RL fine-tuning</span><span class="kw">GSPO</span><span class="kw">COMET</span><span class="kw">Reward modeling</span></div>
-      </article>
-    </div>
-
-    <div class="proj-cat">Inference &amp; Serving</div>
-    <div class="proj-grid">
-      <article class="proj">
-        <div class="proj-h"><h3>Frontier-Model Inference &amp; Serving</h3><span class="lang">Engineer</span></div>
-        <p>Brought up and benchmarked <b>~20 frontier model families</b> (Qwen3/3.5, Kimi K2, DeepSeek-V4,
-           MiniMax, NVIDIA Nemotron, StepFun, Gemma-4, GLM) across <b>vLLM</b> &amp; <b>SGLang</b> and
-           FP8 / NVFP4 / GGUF quantization — including multi-node MoE serving and a CUDA
-           forward-compatibility fix.</p>
-        <p class="hl">Ray TP16 +33% over MultiProcessing on a 235B MoE · NVFP4 model at 1,853 tok/s on 2×H200</p>
-        <div><span class="kw">vLLM</span><span class="kw">SGLang</span><span class="kw">Quantization</span><span class="kw">Multi-node MoE</span><span class="kw">CUDA</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3>On-Prem LLM Serving Platform</h3><span class="lang">Lead engineer / architect</span></div>
-        <p>Led benchmarking, deployment, and architecture for running an internal LLM document-intelligence
-           platform fully <b>on-prem</b> with self-hosted models: a GPU×model×precision benchmark harness, an
-           OpenAI-compatible <b>tool-call shim</b> for non-native models, 16 deployment recipes, and formal
-           architecture reports.</p>
-        <div><span class="kw">On-prem serving</span><span class="kw">Tool-calling</span><span class="kw">Benchmarking</span><span class="kw">C4 architecture</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3>Inference on NVIDIA GB300 &amp; DGX Spark</h3><span class="lang">Engineer</span></div>
-        <p>Deployed and benchmarked open-weight MoE models on <b>NVIDIA GB300</b>, <b>DGX Spark (GB10)</b>
-           and <b>H200</b> systems, and sized hardware for enterprise on-prem deployments using production
-           workload profiles.</p>
-        <div><span class="kw">vLLM</span><span class="kw">NVFP4 / FP8</span><span class="kw">Capacity planning</span><span class="kw">On-prem</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3>Speculative Decoding</h3><span class="lang">Engineer</span></div>
-        <p>Compared speculative-decoding methods (<b>EAGLE-3</b>, <b>MTP</b>, <b>DSpark</b>, <b>DFlash</b>,
-           n-gram) across model sizes and hardware, and tuned serving configurations for real workloads.</p>
-        <div><span class="kw">Speculative decoding</span><span class="kw">vLLM</span><span class="kw">SGLang</span><span class="kw">Throughput / latency</span></div>
-      </article>
-    </div>
-
-    <div class="proj-cat">Agents, Retrieval &amp; Evaluation</div>
-    <div class="proj-grid">
-      <article class="proj">
-        <div class="proj-h"><h3>Multi-Agent RAG for Legal Documents</h3><span class="lang">Core engineer · 61 commits</span></div>
-        <p>Built major parts of a <b>hierarchical multi-agent RAG</b> platform for legal/financial document
-           analysis: an orchestrator decomposing queries into subtasks, up to <b>16 parallel
-           citation-grounded subagents</b>, a claim/citation reviewer, and a report writer. Authored the
-           model-comparison benchmark suite (position-debiased LLM-as-judge).</p>
-        <div><span class="kw">Multi-agent</span><span class="kw">RAG</span><span class="kw">MCP</span><span class="kw">Hybrid retrieval (RRF)</span><span class="kw">Citation grounding</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3>LLM Evaluation &amp; Benchmarking</h3><span class="lang">Designer / contributor</span></div>
-        <p>Designed evaluation systems using <b>asymmetry-of-verification</b> task design, adversarial
-           difficulty filtering, calibration (<b>Brier / ECE</b>), and <b>LLM-as-judge</b> grading — used to
-           qualify models for production, plus document-extraction and speculative-decoding studies.</p>
-        <p class="hl">Debunked a headline "4–5× speedup" claim as a benchmarking artifact — avoiding a costly wrong turn</p>
-        <div><span class="kw">Benchmark design</span><span class="kw">LLM-as-judge</span><span class="kw">Calibration</span><span class="kw">Langfuse</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3>Agent Trajectory Evaluation &amp; Oversight</h3><span class="lang">Lead developer</span></div>
-        <p>Trajectory-level evaluation and oversight of the company's production agent harness working over
-           <b>MCP</b> tools — every trajectory traced end to end and graded step by step: tool selection and
-           call order, citation grounding, rubric-based <b>LLM-as-judge</b>, cost and latency. It is the release
-           gate for new MCP tool servers and oversees live production trajectories; the open
-           <b>mecellem-legal-bench</b> was designed and run on it (see Writing).</p>
-        <div><span class="kw">Agent evaluation</span><span class="kw">MCP</span><span class="kw">Rubric design</span><span class="kw">FastAPI / React</span><span class="kw">ClickHouse</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3>Monitoring &amp; Oversight of LLM Agents</h3><span class="lang">Research contributor</span></div>
-        <p>Research on observing and overseeing LLM agent harnesses: call-level trace profiling, behaviour
-           labelling, and lightweight monitors that can flag agent misbehaviour at runtime.</p>
-        <div><span class="kw">Agent oversight</span><span class="kw">Trace profiling</span><span class="kw">Monitors</span><span class="kw">Research</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3>Retrieval &amp; Semantic Caching</h3><span class="lang">Sole researcher</span></div>
-        <p>Designed a <b>4-layer semantic cache</b> for a Turkish-legal RAG pipeline (tenant isolation,
-           versioning, audit logging), and reimplemented &amp; benchmarked the <b>LEANN</b> low-storage vector
-           index against FAISS Flat and IVF-PQ — quantifying the storage / latency trade-off.</p>
-        <div><span class="kw">RAG</span><span class="kw">pgvector</span><span class="kw">FAISS</span><span class="kw">LEANN</span><span class="kw">Neo4j / GraphRAG</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3>LLM Observability &amp; Query Routing</h3><span class="lang">Sole author</span></div>
-        <p>Built an <b>LLM-trace observability UI</b> (RCA / prompt-quality / summary analyses with a
-           natural-language assistant) and an ML pipeline predicting agentic-query execution requirements
-           (intent, context strategy, tool decision) from Turkish conversation traces.</p>
-        <div><span class="kw">Observability</span><span class="kw">Next.js</span><span class="kw">Langfuse</span><span class="kw">Intent modeling</span></div>
-      </article>
-    </div>
-
-    <div class="proj-cat">Applied Pipelines</div>
-    <div class="proj-grid">
-      <article class="proj">
-        <div class="proj-h"><h3>Automated Research &amp; News Pipelines</h3><span class="lang">Contributor / author</span></div>
-        <p>LLM-powered pipelines turning web/PDF sources into research briefings and bilingual news digests —
-           multi-source ingestion, deduplication, summarization, and DOCX / messaging delivery — deployed to
-           <b>Kubernetes</b>; migrated storage from SQLite to <b>MongoDB</b>.</p>
-        <div><span class="kw">Python</span><span class="kw">LLM pipelines</span><span class="kw">MongoDB</span><span class="kw">Docker / K8s</span><span class="kw">CI/CD</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3>On-Device Ontology Extraction &amp; OCR</h3><span class="lang">Sole author</span></div>
-        <p>Evaluated layout-grounded OCR and <b>on-device</b> ontology extraction (LiquidAI LFM2.5-230M) for
-           Turkish legal documents, and benchmarked a 9B vision-language model for structured document
-           extraction against larger baselines.</p>
-        <div><span class="kw">OCR</span><span class="kw">VLM</span><span class="kw">Ontology extraction</span><span class="kw">On-device</span></div>
-      </article>
-      <article class="proj">
-        <div class="proj-h"><h3>On-Device Turkish PII Detection</h3><span class="lang">Evaluator</span></div>
-        <p>Evaluated Turkish PII / named-entity models for on-device and in-browser privacy masking, including
-           ONNX export and <b>WebGPU</b> vs WASM runtime behaviour.</p>
-        <div><span class="kw">PII / NER</span><span class="kw">ONNX Runtime</span><span class="kw">WebGPU</span><span class="kw">Privacy</span></div>
-      </article>
-    </div>
-  </div>
+<section id="more">
+  <h2>also</h2>
+  <ul class="plain">
+    <li>Served ~20 open-weight model families (Qwen, DeepSeek, Kimi, GLM, MiniMax, Nemotron, Gemma) with vLLM and SGLang in FP8 and NVFP4.
+      <span class="meta">1,853 tok/s on 2×H200 · a full agent platform on one 128 GB GB10</span></li>
+    <li>Multi-node MoE serving on the MareNostrum 5 supercomputer, up to 1T parameters.
+      <span class="meta">Ray TP16 +33–43% over multiprocessing</span></li>
+    <li>Compared EAGLE-3, MTP, DFlash and DSpark speculative decoding. The gain shrinks with load on dense models and grows on MoE.
+      <span class="meta">2.7× → 1.2× dense · 1.3× → 1.6× MoE</span></li>
+    <li>Pretrained a 1.7B Turkish diffusion language model from scratch on MareNostrum 5.
+      <span class="meta">~4,400 GPU-hours of pretraining · SLURM · NCCL</span></li>
+    <li>Multi-agent RAG for legal and financial documents: an orchestrator, up to 16 parallel citation-grounded sub-agents and a reviewer.
+      <span class="meta">MCP · hybrid retrieval</span></li>
+  </ul>
 </section>
 
-<!-- ===================== SELECTED RESULTS ===================== -->
-<section id="results" class="section">
-  <div class="wrap">
-    <h2>Selected Results</h2>
-    <p class="section-note">A few measured outcomes and a system sketch from the work above.</p>
-
-    <div class="results-grid">
-      <div class="figure">
-        <h3>Multi-node MoE serving throughput</h3>
-        <p class="cap">vLLM on a supercomputer partition, 1,000 requests at concurrency 300 — Ray vs MultiProcessing backend.</p>
-        <svg viewBox="0 0 460 300" width="100%" role="img" aria-label="MoE serving throughput, Ray vs MultiProcessing">
-          <line x1="46" y1="246.0" x2="446" y2="246.0" stroke="#243049" stroke-width="1"/>
-          <text x="38" y="250.0" text-anchor="end" font-size="11" fill="#7f8ca3" font-family="monospace">0</text>
-          <line x1="46" y1="188.5" x2="446" y2="188.5" stroke="#243049" stroke-width="1"/>
-          <text x="38" y="192.5" text-anchor="end" font-size="11" fill="#7f8ca3" font-family="monospace">110</text>
-          <line x1="46" y1="131.0" x2="446" y2="131.0" stroke="#243049" stroke-width="1"/>
-          <text x="38" y="135.0" text-anchor="end" font-size="11" fill="#7f8ca3" font-family="monospace">220</text>
-          <line x1="46" y1="73.5" x2="446" y2="73.5" stroke="#243049" stroke-width="1"/>
-          <text x="38" y="77.5" text-anchor="end" font-size="11" fill="#7f8ca3" font-family="monospace">330</text>
-          <line x1="46" y1="16.0" x2="446" y2="16.0" stroke="#243049" stroke-width="1"/>
-          <text x="38" y="20.0" text-anchor="end" font-size="11" fill="#7f8ca3" font-family="monospace">440</text>
-          <rect x="95.0" y="116.4" width="46" height="129.6" rx="4" fill="#7a8496"/>
-          <text x="118.0" y="110.4" text-anchor="middle" font-size="11" fill="#b9c4d6" font-family="monospace">248</text>
-          <rect x="151.0" y="73.8" width="46" height="172.2" rx="4" fill="#3987e5"/>
-          <text x="174.0" y="67.8" text-anchor="middle" font-size="11" fill="#eef3fb" font-family="monospace" font-weight="600">330</text>
-          <text x="146.0" y="51.8" text-anchor="middle" font-size="12" fill="#5eead4" font-family="monospace" font-weight="700">+33%</text>
-          <text x="146.0" y="266.0" text-anchor="middle" font-size="12" fill="#b9c4d6">Qwen3-235B</text>
-          <rect x="295.0" y="99.6" width="46" height="146.4" rx="4" fill="#7a8496"/>
-          <text x="318.0" y="93.6" text-anchor="middle" font-size="11" fill="#b9c4d6" font-family="monospace">280</text>
-          <rect x="351.0" y="37.0" width="46" height="209.0" rx="4" fill="#3987e5"/>
-          <text x="374.0" y="31.0" text-anchor="middle" font-size="11" fill="#eef3fb" font-family="monospace" font-weight="600">400</text>
-          <text x="346.0" y="15.0" text-anchor="middle" font-size="12" fill="#5eead4" font-family="monospace" font-weight="700">+43%</text>
-          <text x="346.0" y="266.0" text-anchor="middle" font-size="12" fill="#b9c4d6">Qwen3.5-397B</text>
-          <line x1="46" y1="246" x2="446" y2="246" stroke="#243049" stroke-width="1.5"/>
-          <text x="12" y="131.0" text-anchor="middle" font-size="10" fill="#7f8ca3" transform="rotate(-90 12 131.0)">tokens / s</text>
-        </svg>
-        <div class="legend">
-          <span><i style="background:#3987e5"></i>Ray (TP16)</span>
-          <span><i style="background:#7a8496"></i>MultiProcessing</span>
-        </div>
-      </div>
-
-      <div class="figure donut-wrap">
-        <h3>Supercomputer compute</h3>
-        <p class="cap">6,423 GPU-hours on BSC MareNostrum&nbsp;5 (project ehpc317), by workstream.</p>
-        <svg viewBox="0 0 260 260" width="100%" role="img" aria-label="GPU-hours allocation">
-          <path d="M 132.4 36.0 A 92 92 0 1 1 48.3 170.4 L 78.5 154.7 A 58 58 0 1 0 131.5 70.0 Z" fill="#3987e5"/>
-          <text x="193.6" y="171.8" text-anchor="middle" font-size="12" fill="#ffffff" font-weight="700" font-family="monospace">68%</text>
-          <path d="M 46.2 166.0 A 92 92 0 0 1 52.9 77.8 L 81.4 96.4 A 58 58 0 0 0 77.2 152.0 Z" fill="#008300"/>
-          <text x="55.2" y="126.4" text-anchor="middle" font-size="12" fill="#ffffff" font-weight="700" font-family="monospace">17%</text>
-          <path d="M 55.6 73.8 A 92 92 0 0 1 127.6 36.0 L 128.5 70.0 A 58 58 0 0 0 83.1 93.9 Z" fill="#d55181"/>
-          <text x="95.1" y="65.6" text-anchor="middle" font-size="12" fill="#ffffff" font-weight="700" font-family="monospace">15%</text>
-          <text x="130" y="124" text-anchor="middle" font-size="24" fill="#eef3fb" font-weight="700" font-family="monospace">6,423</text>
-          <text x="130" y="144" text-anchor="middle" font-size="11" fill="#7f8ca3">GPU-hours</text>
-        </svg>
-        <div class="donut-legend">
-          <div><i style="background:#3987e5"></i>Pretraining (CPT)<b>67.8%</b></div>
-          <div><i style="background:#008300"></i>Infra / serving<b>16.8%</b></div>
-          <div><i style="background:#d55181"></i>Post-training (SFT)<b>15.4%</b></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="figure">
-      <h3>Hierarchical multi-agent RAG — system sketch</h3>
-      <p class="cap">Query decomposition → parallel citation-grounded retrieval → verification → synthesis.</p>
-      <div class="flow">
-        <div class="node">User query</div>
-        <div class="arrow">→</div>
-        <div class="node hl">Orchestrator<small>decomposes into TaskSpecs</small></div>
-        <div class="arrow">→</div>
-        <div class="node fan">16× Subagents<small>parallel, citation-grounded retrieval (vector · FTS5 · hybrid-RRF)</small></div>
-        <div class="arrow">→</div>
-        <div class="node">Reviewer<small>verifies claims &amp; citations</small></div>
-        <div class="arrow">→</div>
-        <div class="node">Aggregator + Writer<small>assembles the grounded report</small></div>
-      </div>
-    </div>
-  </div>
+<section id="publications">
+  <h2>publications</h2>
+  <ul class="plain">
+    <li><a href="https://arxiv.org/abs/2604.19321">RDP LoRA: Geometry-Driven Identification for Parameter-Efficient Adaptation in Large Language Models</a>
+      <br><span class="meta">arXiv 2026</span></li>
+    <li><a href="https://arxiv.org/abs/2511.16528">TurkColBERT: A Benchmark of Dense and Late-Interaction Models for Turkish Information Retrieval</a>
+      <br><span class="meta">ACLing 2025 · Elsevier Procedia Computer Science</span></li>
+    <li><a href="https://arxiv.org/abs/2509.17671">Turk-LettuceDetect: A Hallucination Detection Model for Turkish RAG Applications</a>
+      <br><span class="meta">FLLM 2025 · IEEE</span></li>
+    <li><a href="https://arxiv.org/abs/2509.06631">Guided Decoding and Its Critical Role in Retrieval-Augmented Generation</a>
+      <br><span class="meta">SIU 2025 · IEEE</span></li>
+    <li><a href="https://link.springer.com/chapter/10.1007/978-3-031-87154-2_58">Automatic Mine Detection for Underwater and Surface Vehicles</a>
+      <br><span class="meta">ICCIDA 2024 · Springer</span></li>
+  </ul>
 </section>
 
-<!-- ===================== WRITING ===================== -->
-<section id="writing" class="section alt">
-  <div class="wrap">
-    <h2>Writing &amp; Open Benchmarks</h2>
-    <ol class="pub-list">
-
-      <li class="pub">
-        <div class="pub-year">2026</div>
-        <div class="pub-main">
-          <a class="pub-title" href="https://newmind.ai/research/mecellem-legal-bench/">
-            mecellem-legal-bench: Do models apply Turkish law, or just cite it?</a>
-          <p class="pub-authors"><strong>Reyhan Bayraktar</strong></p>
-          <p class="pub-venue">NewMind AI Research blog · 8 Oct 2026 ·
-            <a href="https://huggingface.co/datasets/newmindai/mecellem-legal-bench">Dataset</a> ·
-            <a href="https://huggingface.co/spaces/newmindai/mecellem-legal-bench">Leaderboard</a></p>
-          <p class="pub-blurb">An open benchmark of 42 Turkish legal practice questions, each answer graded
-            point by point on 367 criteria along Issue, Rule, Application and Conclusion (IRAC). Thirteen
-            models scored: application is the weakest step (median 72.2% of criteria met, against 91.7% for
-            the issue), and the best model is fully right on all three attempts for only 42.9% of questions.</p>
-        </div>
-      </li>
-
-    </ol>
-  </div>
-</section>
-
-<!-- ===================== PUBLICATIONS ===================== -->
-<section id="publications" class="section">
-  <div class="wrap">
-    <h2>Publications</h2>
-    <p class="section-note">Author list as published; <strong>my name</strong> in bold.</p>
-    <ol class="pub-list">
-
-      <li class="pub">
-        <div class="pub-year">2026</div>
-        <div class="pub-main">
-          <a class="pub-title" href="https://arxiv.org/abs/2604.19321">
-            RDP LoRA: Geometry-Driven Identification for Parameter-Efficient Adaptation in Large Language Models</a>
-          <p class="pub-authors">Yusuf Çelebi, Yağız Asker, Özay Ezerceli, Mahmoud ElHussieni, Selva Taş,
-            <strong>Reyhan Bayraktar</strong>, Fatma Betül Terzioğlu</p>
-          <p class="pub-venue">Preprint · arXiv, 2026</p>
-          <p class="pub-blurb">Models hidden-state evolution as a geometric trajectory and applies the
-            training-free Ramer–Douglas–Peucker algorithm to select which layers to adapt during LoRA
-            fine-tuning of Qwen3-8B — improving accuracy on MMLU-Math.</p>
-        </div>
-      </li>
-
-      <li class="pub">
-        <div class="pub-year">2025</div>
-        <div class="pub-main">
-          <a class="pub-title" href="https://arxiv.org/abs/2511.16528">
-            TurkColBERT: A Benchmark of Dense and Late-Interaction Models for Turkish Information Retrieval</a>
-          <p class="pub-authors">Özay Ezerceli, Mahmoud El Hussieni, Selva Taş,
-            <strong>Reyhan Bayraktar</strong>, Fatma Betül Terzioğlu, Yusuf Çelebi, Yağız Asker</p>
-          <p class="pub-venue">ACLing 2025 — 7th Int. Conf. on AI in Computational Linguistics ·
-            Elsevier Procedia Computer Science</p>
-          <p class="pub-blurb">First benchmark of dense vs. late-interaction retrievers for Turkish IR; a
-            1.0M-parameter model ~600× smaller than a 600M dense encoder retains &gt;71% of its mAP.</p>
-        </div>
-      </li>
-
-      <li class="pub">
-        <div class="pub-year">2025</div>
-        <div class="pub-main">
-          <a class="pub-title" href="https://arxiv.org/abs/2509.17671">
-            Turk-LettuceDetect: A Hallucination Detection Model for Turkish RAG Applications</a>
-          <p class="pub-authors">Selva Taş, Mahmut El Huseyni, Özay Ezerceli,
-            <strong>Reyhan Bayraktar</strong>, Fatma Betül Terzioğlu</p>
-          <p class="pub-venue">FLLM 2025 — Int. Conf. on Foundation and Large Language Models (IEEE)</p>
-          <p class="pub-blurb">First suite of hallucination-detection models for Turkish RAG; a fine-tuned
-            ModernBERT reaches F1 0.727 with 8,192-token context, suitable for real-time deployment.</p>
-        </div>
-      </li>
-
-      <li class="pub">
-        <div class="pub-year">2025</div>
-        <div class="pub-main">
-          <a class="pub-title" href="https://arxiv.org/abs/2509.06631">
-            Guided Decoding and Its Critical Role in Retrieval-Augmented Generation</a>
-          <p class="pub-authors">Özgür Uğur, Musa Yılmaz, Esra Şavirdi, Özay Ezerceli, Mahmut El Huseyni,
-            Selva Taş, <strong>Reyhan Bayraktar</strong></p>
-          <p class="pub-venue">SIU 2025 — 33rd IEEE Signal Processing and Communications Applications Conf.</p>
-          <p class="pub-blurb">Studies guided decoding (Outlines, XGrammar, LM Format Enforcer) in RAG across
-            multi-turn settings, quantifying effects on success rate, hallucination, and output quality.</p>
-        </div>
-      </li>
-
-      <li class="pub">
-        <div class="pub-year">2024</div>
-        <div class="pub-main">
-          <a class="pub-title" href="https://link.springer.com/chapter/10.1007/978-3-031-87154-2_58">
-            Automatic Mine Detection for Underwater and Surface Vehicles</a>
-          <p class="pub-authors">Şengül Bayrak, <strong>Reyhan Bayraktar</strong>, Hatice Kübra Doğan</p>
-          <p class="pub-venue">ICCIDA 2024 — Int. Conf. on Computing, Intelligence and Data Analytics ·
-            Springer, Smart Innovation, Systems and Technologies</p>
-          <p class="pub-blurb">Earlier work: automatic naval-mine detection for unmanned underwater and
-            surface vehicles operating in fleet formation.</p>
-        </div>
-      </li>
-
-    </ol>
-  </div>
-</section>
-
-<!-- ===================== EXPERIENCE ===================== -->
-<section id="experience" class="section alt">
-  <div class="wrap">
-    <h2>Experience</h2>
-    <div class="exp">
-      <div class="exp-item">
-        <div class="exp-when">2025 – present</div>
-        <div class="exp-what">
-          <p class="exp-role">AI Research Engineer</p>
-          <p class="exp-org">NewMind AI · Istanbul</p>
-          <p>Full LLM lifecycle for Turkish legal-domain NLP — pretraining &amp; fine-tuning, high-performance
-             inference, retrieval / RAG, evaluation, and agentic systems; more recently on-prem inference and
-             monitoring of LLM agents. Four publications in the period.</p>
-        </div>
-      </div>
-      <div class="exp-item">
-        <div class="exp-when">2025 – 2026</div>
-        <div class="exp-what">
-          <p class="exp-role">Compute — Barcelona Supercomputing Center, MareNostrum 5</p>
-          <p class="exp-org">Project ehpc317</p>
-          <p>6,000+ GPU-hours across multi-node H100 partitions for Turkish language-model pretraining and
-             inference benchmarking.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== EXPERTISE ===================== -->
-<section id="expertise" class="section">
-  <div class="wrap">
-    <h2>Expertise</h2>
-    <div class="exp-cols">
-      <div><h4>LLM Training</h4><p>Diffusion LMs · long-context pretraining · SFT · RL fine-tuning (GSPO) ·
-        reward modeling (COMET/BLEU/chrF) · EN→TR machine translation</p></div>
-      <div><h4>Inference &amp; Serving</h4><p>vLLM · SGLang · TensorRT-LLM · multi-node MoE ·
-        quantization (FP8/NVFP4/AWQ/GGUF) · speculative decoding · ONNX Runtime · H200 / GB300 / DGX Spark</p></div>
-      <div><h4>Retrieval &amp; RAG</h4><p>pgvector · Qdrant · Elasticsearch · Neo4j/GraphRAG · FAISS ·
-        ColBERT late-interaction · BGE-M3 · semantic caching</p></div>
-      <div><h4>Agentic &amp; Evaluation</h4><p>Multi-agent orchestration · MCP · hierarchical RAG ·
-        benchmark design · rubric design · LLM-as-judge · agent monitoring</p></div>
-      <div><h4>Engineering</h4><p>Python · TypeScript · Rust · FastAPI · Next.js/React ·
-        PostgreSQL/MongoDB/ClickHouse · Docker · Kubernetes · CI/CD</p></div>
-      <div><h4>HPC</h4><p>BSC MareNostrum 5 · SLURM · Singularity · Ray · NCCL/InfiniBand · TRUBA</p></div>
-    </div>
-  </div>
+<section id="experience">
+  <h2>experience</h2>
+  <ul class="plain">
+    <li>Research Engineer, NewMind AI <span class="meta">· 2025 – present</span></li>
+    <li>ML Engineer Intern, Voiser <span class="meta">· 2023</span></li>
+    <li>Image Processing Lead, Auvtech university robotics team <span class="meta">· 2021 – 2024</span></li>
+    <li>B.Sc. Computer Engineering, Istanbul Sabahattin Zaim University <span class="meta">· 2020 – 2024</span></li>
+  </ul>
 </section>

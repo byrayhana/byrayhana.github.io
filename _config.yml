@@ -1,20 +1,25 @@
 title: Reyhan Bayraktar
-tagline: AI Research Engineer
+tagline: GenAI Engineer
 description: >-
-  Reyhan Bayraktar — AI Research Engineer at NewMind AI. Research and engineering
-  on large language models: pretraining, high-performance inference, retrieval,
-  evaluation, and agentic systems, with a focus on Turkish and legal-domain NLP.
+  Reyhan Bayraktar is a GenAI engineer working on LLM inference, evaluation and agents:
+  serving open-weight models on-prem (vLLM, SGLang, H200, GB300, DGX Spark) and
+  building benchmarks and agent evaluation that hold up.
 author: Reyhan Bayraktar
 email: reyhanbyrktrr@gmail.com
 url: "https://byrayhana.github.io"
 baseurl: ""
+lang: en
 
-# Profile links (edit freely)
+# Profile links: keep identical everywhere (SEO "sameAs")
 github_user: byrayhana
-huggingface_user: newmindai
+huggingface_user: byrayhana
 linkedin_url: "https://www.linkedin.com/in/reyhan-bayraktar/"
+scholar_url: "https://scholar.google.com/citations?user=PVZCoHkAAAAJ"
 affiliation: "NewMind AI"
 location: "Istanbul, Türkiye"
+
+plugins:
+  - jekyll-sitemap
 
 markdown: kramdown
 permalink: pretty
